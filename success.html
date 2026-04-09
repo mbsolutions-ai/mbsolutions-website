@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful | MB Solutions AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0b;
+            --bg-card: #121214;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a5;
+            --accent: #c9a962;
+            --success: #4ade80;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 600px;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+        
+        .logo span { color: var(--accent); }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--success), #22c55e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+            animation: scaleIn 0.5s ease;
+        }
+        
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .payment-details {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .payment-details h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: var(--text-secondary);
+        }
+        
+        .detail-value {
+            font-weight: 600;
+        }
+        
+        .next-steps {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .next-steps h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+        
+        .next-steps li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .next-steps li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+        }
+        
+        .receipt-note {
+            margin-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">MB<span>Solutions</span> AI</div>
+        
+        <div class="success-icon">✓</div>
+        
+        <h1>Payment Successful!</h1>
+        <p>Thank you for your payment. We've received your order and will begin work immediately.</p>
+        
+        <div class="payment-details" id="paymentDetails">
+            <h3>Payment Details</h3>
+            <div class="detail-row">
+                <span class="detail-label">Status</span>
+                <span class="detail-value" style="color: var(--success);">Completed</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Order Type</span>
+                <span class="detail-value" id="orderType">Processing...</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Amount</span>
+                <span class="detail-value" id="amount">-</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Email</span>
+                <span class="detail-value" id="email">-</span>
+            </div>
+        </div>
+        
+        <div class="next-steps">
+            <h3>What happens next?</h3>
+            <ul id="nextStepsList">
+                <li>We're confirming your payment</li>
+                <li>You'll receive a welcome email within 1 hour</li>
+                <li>We'll schedule your kickoff call</li>
+                <li>Your website will be live in 1-2 weeks</li>
+            </ul>
+        </div>
+        
+        <a href="/" class="btn">Back to Homepage</a>
+        
+        <p class="receipt-note">
+            A receipt has been sent to your email.<br>
+            Questions? Contact us at <a href="mailto:contact@mbsolutions.ai" style="color: var(--accent);">contact@mbsolutions.ai</a>
+        </p>
+    </div>
+
+    <script src="payment-buttons.js"></script>
+    <script>
+        // Get session ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+        const type = urlParams.get('type');
+        
+        // Update UI based on payment type
+        if (type === 'subscription') {
+            document.getElementById('orderType').textContent = 'Monthly Subscription';
+            document.getElementById('nextStepsList').innerHTML = `
+                <li>We're confirming your subscription</li>
+                <li>You'll receive login credentials via email</li>
+                <li>Your first invoice will arrive shortly</li>
+                <li>We'll begin work on your website immediately</li>
+            `;
+        } else if (type === 'booking') {
+            document.getElementById('orderType').textContent = 'Service Booking';
+        } else {
+            document.getElementById('orderType').textContent = 'Website Setup Fee';
+        }
+        
+        // Fetch session details from backend
+        if (sessionId) {
+            const mbPayments = new MBStripePayments('https://your-stripe-server.com');
+            mbPayments.getSessionStatus(sessionId).then(data => {
+                if (data) {
+                    document.getElementById('amount').textContent = '$' + (data.amount_total / 100).toFixed(2);
+                    document.getElementById('email').textContent = data.customer_email || 'N/A';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
