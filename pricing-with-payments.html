@@ -462,21 +462,22 @@
                 <p class="tier-description">Perfect for small businesses just getting started online.</p>
                 
                 <div class="price-block">
-                    <div class="setup-fee">$500 setup</div>
-                    <div class="monthly-fee">$100<span>/month</span></div>
+                    <div class="setup-fee">$1,500 setup</div>
+                    <div class="monthly-fee">$99<span>/month</span></div>
                 </div>
 
                 <ul class="features-list">
-                    <li>5 page professional website</li>
+                    <li>3-5 page professional website</li>
                     <li>Mobile responsive design</li>
                     <li>Contact form</li>
                     <li>Basic SEO setup</li>
-                    <li>1 month free support</li>
+                    <li>Hosting included</li>
+                    <li>24/7 uptime monitoring</li>
                 </ul>
 
                 <div class="payment-section">
-                    <button class="pay-btn" id="payStarterSetup">Pay $500 Setup Fee</button>
-                    <button class="pay-btn secondary" id="subscribeStarter">Subscribe $100/mo</button>
+                    <button class="pay-btn" id="payStarterSetup">Pay $1,500 Setup Fee</button>
+                    <button class="pay-btn secondary" id="subscribeStarter">Subscribe $99/mo</button>
                     <div class="secure-badge">
                         <span>🔒</span>
                         <span>Secure payment via Stripe</span>
@@ -491,21 +492,23 @@
                 <p class="tier-description">Everything you need to grow your business online.</p>
                 
                 <div class="price-block">
-                    <div class="setup-fee">$800 setup</div>
-                    <div class="monthly-fee">$150<span>/month</span></div>
+                    <div class="setup-fee">$2,500 setup</div>
+                    <div class="monthly-fee">$199<span>/month</span></div>
                 </div>
 
                 <ul class="features-list">
                     <li class="included">Everything in Starter</li>
-                    <li>AI chatbot integration</li>
+                    <li>5-8 pages</li>
+                    <li>AI chatbot with lead capture</li>
                     <li>Online booking system</li>
-                    <li>Google Maps integration</li>
-                    <li>Priority support</li>
+                    <li>Google Maps & Business Profile</li>
+                    <li>Monthly content updates</li>
+                    <li>Priority email support</li>
                 </ul>
 
                 <div class="payment-section">
-                    <button class="pay-btn" id="payProSetup">Pay $800 Setup Fee</button>
-                    <button class="pay-btn secondary" id="subscribePro">Subscribe $150/mo</button>
+                    <button class="pay-btn" id="payProSetup">Pay $2,500 Setup Fee</button>
+                    <button class="pay-btn secondary" id="subscribePro">Subscribe $199/mo</button>
                     <div class="secure-badge">
                         <span>🔒</span>
                         <span>Secure payment via Stripe</span>
@@ -519,21 +522,25 @@
                 <p class="tier-description">Full-service solution for businesses ready to dominate.</p>
                 
                 <div class="price-block">
-                    <div class="setup-fee">$1,200 setup</div>
-                    <div class="monthly-fee">$250<span>/month</span></div>
+                    <div class="setup-fee">$5,000 setup</div>
+                    <div class="monthly-fee">$349<span>/month</span></div>
                 </div>
 
                 <ul class="features-list">
                     <li class="included">Everything in Pro</li>
-                    <li>Advanced SEO optimization</li>
-                    <li>Monthly performance reports</li>
-                    <li>Social media integration</li>
+                    <li>8-15 pages</li>
+                    <li>Advanced AI with lead qualification</li>
+                    <li>Payment processing integration</li>
+                    <li>Email marketing automation</li>
+                    <li>Custom features & integrations</li>
+                    <li>Monthly analytics reports</li>
                     <li>Dedicated account manager</li>
+                    <li>Phone & priority support</li>
                 </ul>
 
                 <div class="payment-section">
-                    <button class="pay-btn" id="payBusinessSetup">Pay $1,200 Setup Fee</button>
-                    <button class="pay-btn secondary" id="subscribeBusiness">Subscribe $250/mo</button>
+                    <button class="pay-btn" id="payBusinessSetup">Pay $5,000 Setup Fee</button>
+                    <button class="pay-btn secondary" id="subscribeBusiness">Subscribe $349/mo</button>
                     <div class="secure-badge">
                         <span>🔒</span>
                         <span>Secure payment via Stripe</span>
@@ -593,7 +600,7 @@
         // Setup Fee Buttons
         document.getElementById('payStarterSetup').addEventListener('click', () => {
             mbPayments.paySetupFee({
-                amount: 50000, // $500 in cents
+                amount: 150000, // $1,500 in cents
                 clientName: document.getElementById('clientName').value,
                 clientEmail: document.getElementById('clientEmail').value,
                 businessName: document.getElementById('businessName').value,
@@ -604,7 +611,7 @@
         
         document.getElementById('payProSetup').addEventListener('click', () => {
             mbPayments.paySetupFee({
-                amount: 80000, // $800 in cents
+                amount: 250000, // $2,500 in cents
                 clientName: document.getElementById('clientName').value,
                 clientEmail: document.getElementById('clientEmail').value,
                 businessName: document.getElementById('businessName').value,
@@ -615,7 +622,7 @@
         
         document.getElementById('payBusinessSetup').addEventListener('click', () => {
             mbPayments.paySetupFee({
-                amount: 120000, // $1,200 in cents
+                amount: 500000, // $5,000 in cents
                 clientName: document.getElementById('clientName').value,
                 clientEmail: document.getElementById('clientEmail').value,
                 businessName: document.getElementById('businessName').value,
